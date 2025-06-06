@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-50; /* Or a very light blue, e.g., bg-blue-50 */
+}
