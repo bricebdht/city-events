@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 
+interface Activity {
+  id: number
+  title: string
+  description: string
+  date: string
+  location_url: string
+}
+
 function Home() {
-  const [activities, setActivities] = useState([])
+  const [activities, setActivities] = useState<Activity[]>([])
 
   useEffect(() => {
     const fetchActivities = async () => {
       const { data, error } = await supabase
-        .from('activities')
+        .from<Activity>('activities')
         .select('id, title, description, date, location_url')
         .order('date', { ascending: true })
       if (!error) {
