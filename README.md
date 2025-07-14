@@ -1,6 +1,6 @@
 # City Events
 
-A simple React application built with [Vite](https://vitejs.dev/) and styled using [Tailwind CSS](https://tailwindcss.com/).
+A simple React application built with [Vite](https://vitejs.dev/) and styled using [Tailwind CSS](https://tailwindcss.com/). The source code is now written in TypeScript.
 
 ## Development
 
