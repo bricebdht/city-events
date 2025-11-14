@@ -1,32 +1,29 @@
-import { useEffect, useState } from 'react'
-import { supabase } from '../lib/supabaseClient'
+import { useEffect, useState } from "react";
+import mockApi from "../lib/mockApi";
 
 interface Activity {
-  id: number
-  title: string
-  description: string
-  date: string
-  location_url: string
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  location_url: string;
 }
 
 function Home() {
-  const [activities, setActivities] = useState<Activity[]>([])
+  const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
     const fetchActivities = async () => {
-      const { data, error } = await supabase
-        .from<Activity>('activities')
-        .select('id, title, description, date, location_url')
-        .order('date', { ascending: true })
-      if (!error) {
-        setActivities(data)
-      } else {
-        console.error('Error fetching activities', error)
+      try {
+        const data = await mockApi.getActivities();
+        setActivities(data);
+      } catch (err) {
+        console.error("Error fetching activities", err);
       }
-    }
+    };
 
-    fetchActivities()
-  }, [])
+    fetchActivities();
+  }, []);
 
   return (
     <div className="p-4 space-y-4">
@@ -48,7 +45,7 @@ function Home() {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
