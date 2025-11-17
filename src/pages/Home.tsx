@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import mockApi from "../lib/mockApi";
 
 interface Activity {
@@ -89,12 +90,20 @@ function Home() {
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Activities</h1>
-        <button
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-          onClick={openModal}
-        >
-          Create Activity
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/map"
+            className="bg-white border rounded px-4 py-2 text-gray-700 hover:shadow"
+          >
+            View Map
+          </Link>
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+            onClick={openModal}
+          >
+            Create Activity
+          </button>
+        </div>
       </div>
 
       {activities.map((activity) => (
